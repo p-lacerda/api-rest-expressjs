@@ -1,10 +1,10 @@
 const connection = require('./connection');
 
 const getAll = async () => {
-  const [authors] = await connection.execute(
+  const [receitas] = await connection.execute(
     'SELECT * FROM financeiro_db.receitas;'
   );
-  return authors;
+  return receitas;
 };
 
 module.exports = {
