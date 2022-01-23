@@ -13,7 +13,6 @@ app.get('/receitas', async (_req, res) => {
   res.status(200).json(receitas);
 });
 
-
 const PORT = 3000;
 
 app.listen(PORT, () => {
