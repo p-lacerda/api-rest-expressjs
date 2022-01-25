@@ -15,6 +15,7 @@ module.exports = (err, req, res, _next) => {
   const statusByErrorCode = {
     notFound: 404, // Erros do tipo `notFound` retornam status 404 Not Found
     alreadyExists: 409, // Erros do tipo `alreadyExists` retornam status 409 Conflict
+    doesntExists: 400
     // Podemos adicionar quantos códigos novos desejarmos
   };
 
