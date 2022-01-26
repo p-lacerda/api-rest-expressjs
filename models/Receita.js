@@ -14,14 +14,10 @@ const findByName = async (descricao, data) => {
 
   const params = [descricao, data];
 
-  // Executamos a consulta e retornamos o resultado
   const receitas = await connection.execute(query, params);
 
-  // Caso nenhum author seja encontrado, devolvemos null
   if (receitas[0].length === 0) return null;
 
-  // Caso contrário, retornamos a receita encontrado
-  // console.log(receitas[0])
   return receitas[0];
 };
 
@@ -51,9 +47,26 @@ const createReceita = async (descricao, valor, data) => {
   return receitaEncontrada;
 };
 
+const deleteReceita = async (id) => {
+  const receita = await connection.execute('DELETE FROM financeiro_db.receitas WHERE id = ?', [id]);
+
+  return receita;
+}
+
+const updateReceita = async (descricao, valor, data, id) => {
+  const receita = await connection.execute(
+    'UPDATE financeiro_db.receitas SET descricao = ?, valor = ?, data = ? WHERE id = ?',
+    [descricao, valor, data, id]
+  );
+
+  return receita;
+}
+
 module.exports = {
   getAll,
   createReceita,
   findByName,
-  findByID
+  findByID,
+  deleteReceita,
+  updateReceita
 };
