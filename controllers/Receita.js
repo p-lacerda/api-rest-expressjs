@@ -24,8 +24,24 @@ const createReceita = async (req, res, next) => {
   res.status(200).json(receita);
 }
 
+const deleteReceita = async (req, res) => {
+  const { id } = req.params;
+  const receita = Receita.deleteReceita(id);
+
+  res.status(200).json(receita);
+}
+
+const updateReceita = async (req, res) => {
+  const { descricao, valor, id } = req.body;
+
+  const data = new Date();
+  Receita.updateReceita(descricao, valor, data, id);
+}
+
   module.exports = {
     getAll,
     createReceita,
-    findByID
+    findByID,
+    deleteReceita,
+    updateReceita
 }

@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.get('/receitas', rescue(Receita.getAll));
 app.get('/receitas/:id', rescue(Receita.findByID));
 app.post('/receitas', rescue(Receita.createReceita));
+app.delete('/receitas/:id', rescue(Receita.deleteReceita));
 
 app.use(errorMiddleware);
 

@@ -29,10 +29,20 @@ const create = async (descricao, valor, data) => {
   return Receita.createReceita(descricao, valor, data);
 }
 
+const deleteReceita = async (id) => {
+  Receita.deleteReceita(id);
+}
+
+const updateReceita = async (descricao, valor, data, id) => {
+  Receita.updateReceita(descricao, valor, data, id);
+}
+
 module.exports = {
   create,
   getAll,
-  findByID
+  findByID,
+  deleteReceita,
+  updateReceita
 };
 
 
