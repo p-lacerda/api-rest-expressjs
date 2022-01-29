@@ -15,7 +15,7 @@ const create = async (descricao, valor, data) => {
   }
 
   const existingReceita = await Receita.findByName(descricao, data);
-  console.log(existingReceita);
+  
 
   if (existingReceita) {
     return {
