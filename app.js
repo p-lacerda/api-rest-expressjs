@@ -2,6 +2,8 @@ const express = require('express');
 const Income = require('./controllers/IncomeController');
 const Expense = require('./controllers/ExpenseController');
 
+const APP_PORT = process.env.PORT;
+
 const app = express();
 
 app.use(express.json());
@@ -14,11 +16,12 @@ app.delete('/receitas/:id', Income.deleteIncome);
 
 // Despesas
 
-app.get('/despesas/', Expense.searchAll);
+app.get('/despesas/', Expense.findAll);
 app.get('/despesas/:id', Expense.findById);
-app.get('/despesas/', Expense.createExpense);
-app.get('/despesas/:id', Expense.deleteExpense);
+app.put('/despesas/:id', Expense.updateExpense);
+app.post('/despesas/', Expense.createExpense);
+app.delete('/despesas/:id', Expense.deleteExpense);
 
-app.listen((3000), () => {
-  console.log('Porta 3000 aberta');
+app.listen((APP_PORT), () => {
+  console.log('Aplicação aberta na porta', APP_PORT);
 });

@@ -14,7 +14,7 @@ CREATE TABLE receitas(
 CREATE TABLE despesas(
     id INT AUTO_INCREMENT PRIMARY KEY,
     descricao VARCHAR(100) NOT NULL,
-    valor DECIMAL(3,2) NOT NULL,
+    valor INT NOT NULL,
     data DATETIME NOT NULL
     
 ) ENGINE = InnoDB;
