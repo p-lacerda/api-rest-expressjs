@@ -1,22 +1,14 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const rescue = require('express-rescue');
-const errorMiddleware = require('./middlewares/error');
-const Receita = require('./controllers/Receita');
+const Receita = require('./controllers/ReceitaController');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.get('/receitas', rescue(Receita.getAll));
-app.get('/receitas/:id', rescue(Receita.findByID));
-app.post('/receitas', rescue(Receita.createReceita));
-app.delete('/receitas/:id', rescue(Receita.deleteReceita));
+app.get('/receitas', Receita.searchAll);
+app.get('/receitas/:id', Receita.findById);
+app.post('/receitas', Receita.createReceita);
 
-app.use(errorMiddleware);
-
-const PORT = 3000;
-
-app.listen(PORT, () => {
-  
+app.listen((3000), () => {
+  console.log('Porta 3000 aberta');
 });
