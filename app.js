@@ -18,8 +18,9 @@ app.delete('/receitas/:id', Income.deleteIncome);
 
 app.get('/despesas/', Expense.findAll);
 app.get('/despesas/:id', Expense.findById);
-app.get('/despesas/', Expense.createExpense);
-app.get('/despesas/:id', Expense.deleteExpense);
+app.put('/despesas/:id', Expense.updateExpense);
+app.post('/despesas/', Expense.createExpense);
+app.delete('/despesas/:id', Expense.deleteExpense);
 
 app.listen((APP_PORT), () => {
   console.log('Aplicação aberta na porta', APP_PORT);

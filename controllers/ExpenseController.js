@@ -25,7 +25,7 @@ const createExpense = async (req, res) => {
     return res.status(400).json({ message: 'Already exists' });
   }
 
-  const expenses = await Expense.createIncome(descricao, valor, data);
+  const expenses = await Expense.createExpense(descricao, valor, data);
 
   return res.status(201).json(expenses);
 };
@@ -34,14 +34,14 @@ const updateExpense = async (req, res) => {
   const { id } = req.params;
   const { descricao, valor } = req.body;
 
-  const expenses = await Expense.updateIncome(descricao, valor, id);
+  const expenses = await Expense.updateExpense(descricao, valor, id);
 
   res.status(203).json(expenses);
 };
 
 const deleteExpense = async (req, res) => {
   const { id } = req.params;
-  const expenses = await Expense.deleteIncome(id);
+  const expenses = await Expense.deleteExpense(id);
 
   res.status(201).json(expenses);
 };
